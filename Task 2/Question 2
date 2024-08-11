@@ -1,0 +1,30 @@
+The one-hot encoding of amino acids in TCR sequences, particularly focusing on the CDR3 region, is a straightforward method to transform biological sequence data into a format suitable for machine learning models. 
+However, this method does have several limitations, especially for downstream analysis.
+
+Limitations of One-Hot Encoding for TCR Sequences
+•	The CDR3 region in TCRs can vary significantly in length among different sequences. Traditional one-hot encoding assumes a fixed length, which can be problematic when dealing with sequences of varying lengths.
+•	One-hot encoding treats each position independently and does not inherently capture the sequential or positional relationships between amino acids in the sequence. This can be a significant drawback since the spatial configuration of these amino acids affects their interaction with antigens.
+•	Since each amino acid is represented as a binary vector, the resulting feature space can become extremely large, especially with long sequences. This can lead to sparse matrices and increases the computational complexity, potentially reducing model performance.
+•	One-hot encoding does not capture the context or the chemical properties of amino acids, which are crucial for understanding how TCRs recognize specific antigens.
+
+Overcoming the Limitations
+
+To address these limitations, more sophisticated encoding schemes and model architectures can be used:
+•	Embedding Layers: Instead of using one-hot encoding, embedding layers can be employed to transform each amino acid into a dense vector that captures more contextual information. This approach reduces dimensionality and can capture relationships between different amino acids more effectively.
+•	Handling Variable Lengths: Techniques such as padding and masking can be used to handle sequences of varying lengths. Another approach is to use global pooling layers in neural networks to allow the model to learn from variable-length inputs directly.
+•	Recurrent Neural Networks (RNNs): RNNs, especially Long Short-Term Memory (LSTM) or Gated Recurrent Units (GRU), can be used to process sequences. These models are capable of capturing dependencies and relationships across positions in the sequence, addressing the limitation of losing sequential information.
+•	Attention Mechanisms: Implementing attention mechanisms can help the model focus on specific parts of the TCR sequence that are most relevant for recognizing a particular antigen. This can enhance the model's ability to learn complex patterns in the data more effectively than simple one-hot encoding.
+
+TCRdist: 
+• In contrast to one-hot encoding, TCRdist is designed to take into account affinity of the sequences regarding to the biological sense by measuring the “distance” between them.
+• Importantly, TCRdist provides the means by which the relevant functional clusters within high dimensional TCR sequence space can be determined and, hence, the characterisation of the immune response and disease related immune cell heterogeneity. 
+• TCRdist offers a generic setting to analyse TCR repertoires for any immunology research and developments. 
+
+GLIPH: 
+•	Identification of Functionally Related TCR Clusters: GLIPH, among the clusters of TCRs, can find out those TCRs with similar functions, which is effective for vaccine development, disease monitoring, and immunotherapy. 
+•	High Throughput and Accuracy: As for the large-scale data management and search of likely to have common antigenic specificity TCR sequences, GLIPH turns out to be effective. 
+•	Consideration of TCR Sequence Diversity: GLIPH thus explains the structural and functional differentiation of TCR sequences so helping in explaining the complexity of immune response.
+
+By employing these more advanced techniques, it's possible to overcome the primary limitations of one-hot encoding and build models that more accurately predict TCR specificity based on sequence data.
+These approaches can leverage the inherent properties of TCR sequences more effectively, leading to better performance in immunotherapy applications.¶
+
